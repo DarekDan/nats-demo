@@ -3,8 +3,23 @@ import { check, sleep } from 'k6';
 
 // Test configuration
 export const options = {
-  vus: 100,
-  duration: '1m',
+    scenarios: {
+        spike_test: {
+            executor: 'ramping-vus',
+            startVUs: 0,
+            stages: [
+                { duration: '30s', target: 50 },
+                { duration: '1m', target: 100 },
+                { duration: '10s', target: 200 }, // spike!
+                { duration: '1m', target: 100 },
+                { duration: '30s', target: 0 },
+            ],
+        },
+    },
+    thresholds: {
+        http_req_failed: ['rate<0.01'],
+        http_req_duration: ['p(95)<200'],
+    },
 };
 
 // Helper function to generate random string

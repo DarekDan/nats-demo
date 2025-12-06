@@ -11,14 +11,16 @@ import java.io.ByteArrayOutputStream;
 @Service
 public class SerializationService {
 
-    private final KryoPool kryoPool;
+    private static final int INITIAL_BUFFER_SIZE = 1024;
 
-    public SerializationService(KryoPool kryoPool) {
+    private final KryoThreadLocal kryoPool;
+
+    public SerializationService(KryoThreadLocal kryoPool) {
         this.kryoPool = kryoPool;
     }
 
     public byte[] serialize(Object object) {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream(INITIAL_BUFFER_SIZE);
         Output output = new Output(baos);
         Kryo kryo = kryoPool.get();
         kryo.writeObject(output, object);

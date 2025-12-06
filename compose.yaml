@@ -1,6 +1,6 @@
 services:
   nats:
-    image: nats:2.7.4
+    image: nats:latest
     container_name: nats-orders
     ports:
       - "4222:4222"

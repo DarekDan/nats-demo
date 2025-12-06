@@ -16,14 +16,20 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(IllegalStateException.class)
     public ResponseEntity<String> handleNatsDisconnected(IllegalStateException ex) {
-        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
+        return ResponseEntity
+                .status(HttpStatus.SERVICE_UNAVAILABLE)
                 .body("Messaging service unavailable: " + ex.getMessage());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, String>> handleValidation(MethodArgumentNotValidException ex) {
-        Map<String, String> errors = ex.getBindingResult().getFieldErrors().stream()
+        Map<String, String> errors = ex
+                .getBindingResult()
+                .getFieldErrors()
+                .stream()
                 .collect(toMap(FieldError::getField, FieldError::getDefaultMessage));
-        return ResponseEntity.badRequest().body(errors);
+        return ResponseEntity
+                .badRequest()
+                .body(errors);
     }
 }

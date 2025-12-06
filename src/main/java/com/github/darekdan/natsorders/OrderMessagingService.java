@@ -12,11 +12,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class OrderMessagingService {
 
     private final AtomicBoolean subscribed = new AtomicBoolean(false);
-
-    private volatile Connection natsConnection;
-
     private final SerializationService serializationService;
-
+    private volatile Connection natsConnection;
     @Value("${nats.server}")
     private String natsServer = "nats://localhost:4222";
     @Value("${nats.connection-timeout}")

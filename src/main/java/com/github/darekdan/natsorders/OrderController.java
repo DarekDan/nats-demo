@@ -19,7 +19,7 @@ public class OrderController {
     }
 
     @PostMapping("/simple")
-    public ResponseEntity<String> sendOrder(@RequestBody Order order){
+    public ResponseEntity<String> sendOrder(@RequestBody Order order) {
         orderMessagingService.sendOrder(order);
         return ResponseEntity.ok("Order sent successfully: " + order.orderId());
     }

@@ -15,7 +15,12 @@ public class NatsHealthIndicator implements HealthIndicator {
     @Override
     public Health health() {
         return service.isConnected()
-                ? Health.up().build()
-                : Health.down().withDetail("reason", "NATS disconnected").build();
+                ? Health
+                .up()
+                .build()
+                : Health
+                .down()
+                .withDetail("reason", "NATS disconnected")
+                .build();
     }
 }

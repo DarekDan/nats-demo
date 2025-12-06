@@ -1,7 +1,7 @@
 package com.github.darekdan.natsorders;
 
-import org.springframework.stereotype.Component;
 import com.esotericsoftware.kryo.Kryo;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

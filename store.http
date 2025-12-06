@@ -1,0 +1,10 @@
+POST http://localhost:8080/api/orders/simple
+Content-Type: application/json
+
+{
+"orderId": "ORD-001",
+"customerId": "CUST-123",
+"amount": 19.99,
+"status": "PENDING",
+"orderDateTime": "2025-12-06T15:15:15"
+}

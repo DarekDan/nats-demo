@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Component
 public class KryoThreadLocal {
 
-    private static final ThreadLocal<Kryo> kryoThreadLocal = ThreadLocal.withInitial(() -> {
+    private static final ThreadLocal<Kryo> kryoInstanceThreadLocal = ThreadLocal.withInitial(() -> {
         Kryo kryo = new Kryo();
         kryo.register(Order.class);
         kryo.register(BigDecimal.class);
@@ -19,10 +19,10 @@ public class KryoThreadLocal {
     });
 
     public Kryo get() {
-        return kryoThreadLocal.get();
+        return kryoInstanceThreadLocal.get();
     }
 
     public void cleanup() {
-        kryoThreadLocal.remove();
+        kryoInstanceThreadLocal.remove();
     }
 }

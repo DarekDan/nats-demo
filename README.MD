@@ -2,6 +2,7 @@
 
 ## Inspirations
 
+[Spring Boot 4 JMS Client](https://youtu.be/91xVrWlzIe4?si=h89GtfC8Jg650eOe)
 
 ## Test Environment
 

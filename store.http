@@ -1,3 +1,4 @@
+### CREATE SIMPLE ORDER
 POST http://localhost:8080/api/orders/simple
 Content-Type: application/json
 
@@ -9,3 +10,6 @@ Content-Type: application/json
   "orderDateTime": "2025-12-06T15:15:15"
 }
 
+### GET Current Health
+GET http://localhost:8080/actuator/health
+Content-Type: application/json

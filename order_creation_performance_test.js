@@ -37,14 +37,14 @@ function randomAmount(min, max) {
     return (Math.random() * (max - min) + min).toFixed(2);
 }
 
-export default function () {
+export default function main() {
     const url = 'http://localhost:8080/api/orders/simple';
 
     // Randomize payload data
     const payload = JSON.stringify({
         orderId: `ORD-${randomString(6)}`,
         customerId: `CUST-${randomString(4)}`,
-        amount: parseFloat(randomAmount(10, 500)),
+        amount: Number.parseFloat(randomAmount(10, 500)),
         status: 'PENDING',
         orderDateTime: new Date().toISOString()
     });
@@ -62,5 +62,5 @@ export default function () {
         'is status 200 or 201': (r) => r.status === 200 || r.status === 201,
     });
 
-    sleep(1);
+    sleep(0.1);
 }
